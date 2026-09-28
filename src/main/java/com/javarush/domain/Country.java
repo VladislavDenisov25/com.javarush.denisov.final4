@@ -3,6 +3,8 @@ package com.javarush.domain;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.util.List;
+
 
 @Entity(name = "country")
 @Data
@@ -51,7 +53,14 @@ public class Country {
     @Column(name = "head_of_state")
     private String headOfState;
 
-    @Column(name = "capital")
-    private Integer capital;
+    @OneToOne
+    @JoinColumn(name = "capital")
+    private City city;
+
+    @OneToMany(mappedBy = "countryId")
+    private List<CountryLanguage> languages;
+
+    @OneToMany(mappedBy = "name")
+    private List<City> citys;
 
 }

@@ -11,8 +11,9 @@ public class CountryLanguage {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(name = "country_id")
-    private Integer countryId;
+    @ManyToOne
+    @JoinColumn(name = "id")
+    private Country countryId;
 
     @Column(name = "language")
     private String language;
