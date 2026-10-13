@@ -62,7 +62,7 @@ public class Country {
     @OneToMany(mappedBy = "countryId")
     private List<CountryLanguage> languages;
 
-    @OneToMany(mappedBy = "countryId")
+    @OneToMany(mappedBy = "country")
     private List<City> citys;
 
 }

@@ -36,6 +36,10 @@ public class Main {
         mapper = new ObjectMapper();
     }
 
+    private RedisClient prepareRedisClient() {
+        return null;
+    }
+
     public static void main(String[] args) {
         Main main = new Main();
         List<City> allCities = main.fetchData(main);
@@ -45,11 +49,11 @@ public class Main {
     private SessionFactory prepareRelationalDb() {
         final SessionFactory sessionFactory;
         Properties properties = new Properties();
-        properties.put(Environment.DIALECT, "org.hibernate.dialect.MySQL8Dialect");
+        properties.put(Environment.DIALECT, "org.hibernate.dialect.PostgreSQLDialect");
         properties.put(Environment.DRIVER, "com.p6spy.engine.spy.P6SpyDriver");
-        properties.put(Environment.URL, "jdbc:p6spy:mysql://localhost:3306/world");
-        properties.put(Environment.USER, "root");
-        properties.put(Environment.PASS, "root");
+        properties.put(Environment.URL, "jdbc:p6spy:postgresql://localhost:5432/postgres");
+        properties.put(Environment.USER, "postgres");
+        properties.put(Environment.PASS, "pesko345");
         properties.put(Environment.CURRENT_SESSION_CONTEXT_CLASS, "thread");
         properties.put(Environment.HBM2DDL_AUTO, "validate");
         properties.put(Environment.STATEMENT_BATCH_SIZE, "100");
