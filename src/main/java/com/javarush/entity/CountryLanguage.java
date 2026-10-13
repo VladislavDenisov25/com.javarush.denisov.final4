@@ -1,7 +1,10 @@
-package com.javarush.domain;
+package com.javarush.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import org.hibernate.annotations.Type;
+
+import java.math.BigDecimal;
 
 @Entity(name = "country_language")
 @Data
@@ -12,15 +15,17 @@ public class CountryLanguage {
     private Integer id;
 
     @ManyToOne
-    @JoinColumn(name = "id")
+    @JoinColumn(name = "country_id")
     private Country countryId;
 
     @Column(name = "language")
+
     private String language;
 
-    @Column(name = "is_official")
-    private boolean isOfficial;
+    @Column(name = "is_official", columnDefinition = "BIT")
+    @Type(type = "org.hibernate.type.NumericBooleanType")
+    private Boolean isOfficial;
 
     @Column(name = "percentage")
-    private Integer percentage;
+    private BigDecimal percentage;
 }

@@ -1,8 +1,9 @@
-package com.javarush.domain;
+package com.javarush.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 
@@ -11,7 +12,6 @@ import java.util.List;
 public class Country {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     @Column(name = "code")
@@ -20,29 +20,30 @@ public class Country {
     @Column(name = "code_2")
     private String code2;
 
-    @Column(name = "continent")
-    private Integer continent;
+
+    @Enumerated(EnumType.ORDINAL)
+    private Continent continent;
 
     @Column(name = "region")
     private String region;
 
     @Column(name = "surface_area")
-    private Double surfaceArea;
+    private BigDecimal surfaceArea;
 
     @Column(name = "indep_year")
-    private Integer indepYear;
+    private Short indepYear;
 
     @Column(name = "population")
     private Integer population;
 
     @Column(name = "life_expectancy")
-    private Integer lifeExpectancy;
+    private BigDecimal lifeExpectancy;
 
     @Column(name = "gnp")
-    private Integer gnp;
+    private BigDecimal gnp;
 
     @Column(name = "gnpo_id")
-    private Integer gnpoId;
+    private BigDecimal GNPOId;
 
     @Column(name = "local_name")
     private String localName;
@@ -57,10 +58,11 @@ public class Country {
     @JoinColumn(name = "capital")
     private City city;
 
+
     @OneToMany(mappedBy = "countryId")
     private List<CountryLanguage> languages;
 
-    @OneToMany(mappedBy = "name")
+    @OneToMany(mappedBy = "countryId")
     private List<City> citys;
 
 }

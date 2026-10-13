@@ -1,8 +1,7 @@
-package com.javarush.domain;
+package com.javarush.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;
-import org.hibernate.annotations.ValueGenerationType;
 
 @Entity(name = "city")
 @Data
@@ -17,7 +16,7 @@ public class City {
 
    @ManyToOne
    @JoinColumn(name = "country_id")
-    private Country countryId;
+    private Country country;
 
     @Column(name = "district")
     private String district;
