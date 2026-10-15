@@ -1,10 +1,12 @@
 package com.javarush.entity;
 
 import jakarta.persistence.*;
-import lombok.Data;
+import lombok.*;
 
+
+@Getter
+@Setter
 @Entity(name = "city")
-@Data
 public class City {
 
     @Id
@@ -13,6 +15,7 @@ public class City {
 
     @Column(name = "name")
     private String name;
+
 
    @ManyToOne
    @JoinColumn(name = "country_id")
