@@ -2,15 +2,13 @@ package com.javarush.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
 
 import java.math.BigDecimal;
 import java.util.List;
 
-@Getter
-@Setter
+
 @Entity(name = "country")
+@Data
 public class Country {
 
     @Id
@@ -58,7 +56,7 @@ public class Country {
     @Column(name = "head_of_state")
     private String headOfState;
 
-    @OneToOne(fetch = FetchType.LAZY)
+    @OneToOne
     @JoinColumn(name = "capital")
     private City city;
 
